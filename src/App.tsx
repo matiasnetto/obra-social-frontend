@@ -25,7 +25,7 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <BrowserRouter basename="/obra-social-frontend">
         <AuthContextProvider>
           <AsidebarContextProvider>
             <Box minHeight="100vh" sx={{ display: 'flex', background: colors.lightGrey }}>
