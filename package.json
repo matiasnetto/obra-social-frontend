@@ -1,5 +1,4 @@
 {
-  "homepage": "https://matiasnetto.github.io/obra-social-frontend/",
   "name": "turnos-frontend",
   "version": "0.1.0",
   "private": true,
@@ -30,9 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "api": "cd /home/matias/Documentos/Web/Node/TurnosAPI/ && npm run dev",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "api": "cd /home/matias/Documentos/Web/Node/TurnosAPI/ && npm run dev"
   },
   "eslintConfig": {
     "extends": [
@@ -56,7 +53,6 @@
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",
     "eslint": "^8.16.0",
-    "eslint-plugin-react": "^7.30.0",
-    "gh-pages": "^4.0.0"
+    "eslint-plugin-react": "^7.30.0"
   }
 }

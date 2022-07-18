@@ -27,8 +27,12 @@ const RegisterPage: FC = () => {
     if (!ok) {
       setError(message);
     } else {
-      const req = await register(data.username, data.name, data.surname, data.email, data.password);
-      if (req.ok) navigate('/login');
+      try {
+        const req = await register(data.username, data.name, data.surname, data.email, data.password);
+        if (req.ok) navigate('/login');
+      } catch (err) {
+        setError('Ya existe un usuario con ese nombre');
+      }
     }
   };
 

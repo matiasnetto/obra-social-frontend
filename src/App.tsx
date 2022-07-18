@@ -1,4 +1,4 @@
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes, HashRouter } from 'react-router-dom';
 import AsideMenu from './components/Navegation/AsideMenu';
 import { Box } from '@mui/system';
 import HomePage from './pages/HomePage';
@@ -25,7 +25,7 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter basename="/obra-social-frontend">
+      <HashRouter>
         <AuthContextProvider>
           <AsidebarContextProvider>
             <Box minHeight="100vh" sx={{ display: 'flex', background: colors.lightGrey }}>
@@ -50,7 +50,7 @@ function App() {
             </Box>
           </AsidebarContextProvider>
         </AuthContextProvider>
-      </BrowserRouter>
+      </HashRouter>
     </QueryClientProvider>
   );
 }

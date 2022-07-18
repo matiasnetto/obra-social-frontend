@@ -1,4 +1,4 @@
-import { FC, FormEvent, useContext, useState } from 'react';
+import { FC, FormEvent, useContext, useEffect, useState } from 'react';
 import {
   Alert,
   Avatar,
@@ -15,10 +15,17 @@ import {
 import { LockOutlined } from '@mui/icons-material';
 import { AuthContext } from '../Context/AuthContext';
 import { Link as LinkRouter } from 'react-router-dom';
+import { createPortal } from 'react-dom';
+import ModalWindow from '../components/Utils/ModalWindow';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 const LoginPage: FC = () => {
   const { logIn } = useContext(AuthContext);
   const [error, setError] = useState<string>('');
+
+  const [adviceModalOpen, setAdviceModalOpen] = useState<boolean>(
+    sessionStorage.getItem('login-advide-opened') ? false : true
+  );
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -33,6 +40,10 @@ const LoginPage: FC = () => {
 
     if (!logInRes.ok) setError(logInRes.error);
   };
+
+  useEffect(() => {
+    sessionStorage.setItem('login-advide-opened', 'true');
+  }, []);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -87,6 +98,29 @@ const LoginPage: FC = () => {
           </Grid>
         </Box>
       </Box>
+      <Box
+        width={{ xs: '2.5rem', md: '3.5rem' }}
+        height={{ xs: '2.5rem', md: '3.5rem' }}
+        position="absolute"
+        right="2rem"
+        bottom="2rem"
+        border="2px solid #1976d2"
+        borderRadius="100%"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ background: '#1976d211', cursor: 'pointer' }}
+        onClick={() => {
+          setAdviceModalOpen(true);
+        }}
+      >
+        <QuestionMarkIcon sx={{ fontSize: { xs: '2rem', md: '2.5rem' } }} htmlColor="#1976d2" />
+      </Box>
+      {adviceModalOpen &&
+        createPortal(
+          <ModalWindow onAccept={() => setAdviceModalOpen(false)} />,
+          document.getElementById('modal') as HTMLDivElement
+        )}
     </Container>
   );
 };
