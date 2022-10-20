@@ -29,7 +29,7 @@ const ModalWindow: FC<IModalWindowProps> = ({ onAccept }) => {
           </Typography>
           <br />
           <Typography>
-            Usuario: <span style={{ fontWeight: '600' }}>jhondoe</span>
+            Usuario: <span style={{ fontWeight: '600' }}>johndoe</span>
           </Typography>
           <Typography>
             Contraseña: <span style={{ fontWeight: '600' }}>password</span>
